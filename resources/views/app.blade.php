@@ -12,6 +12,10 @@
         <div id="app" class="w-screen h-screen">
             <div class="flex items-center justify-center h-screen relative">
                 <sms-wall></sms-wall>
+
+                <div class="absolute bottom-0 p-4">
+                    <span class="text-sm text-gray-500">Stuur een bericht naar xxx xx xx xx</span>
+                </div>
             </div>
         </div>
 
