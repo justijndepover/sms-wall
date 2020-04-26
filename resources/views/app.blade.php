@@ -8,7 +8,7 @@
         <title>{{ config('app.name', 'SMS Wall') }}</title>
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     </head>
-    <body class="bg-gray-200 text-gray-900">
+    <body class="bg-gray-200 text-gray-900 antialiased">
         <div id="app" class="w-screen h-screen">
             <div class="flex items-center justify-center h-screen relative">
                 <sms-wall></sms-wall>
