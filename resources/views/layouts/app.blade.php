@@ -33,15 +33,19 @@
 
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline">
-                                <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-teal-900 focus:outline-none focus:text-white focus:bg-teal-700">Home</a>
-                                <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-teal-200 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700">Geschiedenis</a>
+                                <a href="{{ route('home') }}" class="px-3 py-2 rounded-md text-sm font-medium @if(Request::is('home')) text-white bg-teal-900 @else text-teal-200 hover:text-white hover:bg-teal-700 @endif focus:outline-none focus:text-white focus:bg-teal-700">Home</a>
+                                <a href="{{ route('history') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium @if(Request::is('history')) text-white bg-teal-900 @else text-teal-200 hover:text-white hover:bg-teal-700 @endif focus:outline-none focus:text-white focus:bg-teal-700">Geschiedenis</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="hidden md:block">
                         <div class="ml-4 flex items-center md:ml-6">
-                            <dropdown></dropdown>
+                            <dropdown :user="{{ Auth::user() }}">
+                                <dropdown-item href="/profile">Jouw profiel</dropdown-item>
+                                <dropdown-item href="/settings">Instellingen</dropdown-item>
+                                <dropdown-item href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</dropdown-item>
+                            </dropdown>
                         </div>
                     </div>
 
@@ -51,26 +55,17 @@
                 </div>
             </div>
 
-            <menu-component :user="{{ Auth::user() }}"></menu-component>
+            <menu-component :user="{{ Auth::user() }}">
+                <menu-component-item class="@if(Request::is('home')) text-white bg-teal-900 @else text-gray-300 hover:text-white hover:bg-teal-700 @endif" href="{{ route('home') }}">Home</menu-component-item>
+                <menu-component-item class="mt-1 @if(Request::is('history')) text-white bg-teal-900 @else text-gray-300 hover:text-white hover:bg-teal-700 @endif" href="{{ route('history') }}">Geschiedenis</menu-component-item>
+            </menu-component>
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                 @csrf
             </form>
         </nav>
 
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900">
-                    Dashboard
-                </h1>
-            </div>
-        </header>
-
-        <main>
-            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-                @yield('content')
-            </div>
-        </main>
+        @yield('content')
     </div>
 </body>
 

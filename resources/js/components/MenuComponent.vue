@@ -1,14 +1,13 @@
 <template>
     <div v-if="isOpen" class="md:hidden">
         <div class="px-2 pt-2 pb-3 sm:px-3">
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-teal-900 focus:outline-none focus:text-white focus:bg-teal-700">Home</a>
-            <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700">Geschiedenis</a>
+            <slot></slot>
         </div>
 
         <div class="pt-4 pb-3 border-t border-teal-700">
             <div class="flex items-center px-5">
                 <div class="flex-shrink-0">
-                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                    <img class="h-10 w-10 rounded-full" :src="gravatar()" alt="" />
                 </div>
 
                 <div class="ml-3">
@@ -27,6 +26,8 @@
 </template>
 
 <script>
+var md5 = require('md5');
+
 export default {
     props: ['user'],
     data () {
@@ -39,5 +40,11 @@ export default {
             this.isOpen = data;
         });
     },
+    methods: {
+        gravatar() {
+            var gravatarId = md5(this.user.email.trim().toLowerCase());
+            return 'https://gravatar.com/avatar/' + gravatarId + '?s=240';
+        }
+    }
 }
 </script>
