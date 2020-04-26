@@ -7,6 +7,7 @@ import DropdownItem from './components/DropdownItem';
 import Menubutton from './components/Menubutton';
 import MenuComponent from './components/MenuComponent';
 import MenuComponentItem from './components/MenuComponentItem';
+import MessagesTable from './components/MessagesTable';
 
 new Vue({
     el: '#app',
@@ -18,5 +19,6 @@ new Vue({
         Menubutton,
         MenuComponent,
         MenuComponentItem,
+        MessagesTable,
     },
 })
