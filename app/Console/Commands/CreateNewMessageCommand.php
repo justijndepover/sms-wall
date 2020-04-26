@@ -12,11 +12,18 @@ class CreateNewMessageCommand extends Command
 
     public function handle()
     {
+        $author = $this->ask('Who is the author?');
+        if (empty($author)) {
+            $this->error('The author field is required.');
+            return 1;
+        }
+
         $message = $this->ask('What is the message?');
         if (empty($message)) {
             $this->error('The message field is required.');
             return 1;
         }
-        CreateNewMessageAction::execute($message);
+
+        CreateNewMessageAction::execute($author, $message);
     }
 }

@@ -2161,6 +2161,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47678,7 +47683,7 @@ var render = function() {
                     {
                       staticClass:
                         "px-6 py-4 whitespace-no-wrap border border-teal-200 bg-teal-100",
-                      attrs: { colspan: "3" }
+                      attrs: { colspan: "4" }
                     },
                     [
                       _c(
@@ -47733,23 +47738,37 @@ var render = function() {
                     _c(
                       "td",
                       {
-                        staticClass: "px-6 py-4 whitespace-no-wrap",
+                        staticClass:
+                          "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500",
                         class:
                           key != _vm.paginationData.data.length - 1
                             ? "border-b border-gray-200"
                             : ""
                       },
                       [
-                        _c(
-                          "div",
-                          { staticClass: "text-sm leading-5 text-gray-900" },
-                          [_vm._v(_vm._s(message.author))]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "text-sm leading-5 text-gray-500" },
-                          [_vm._v(_vm._s(message.message))]
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(message.author) +
+                            "\n                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        staticClass:
+                          "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500",
+                        class:
+                          key != _vm.paginationData.data.length - 1
+                            ? "border-b border-gray-200"
+                            : ""
+                      },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(message.message) +
+                            "\n                "
                         )
                       ]
                     ),
@@ -48000,6 +48019,15 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
+        _c(
+          "th",
+          {
+            staticClass:
+              "px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+          },
+          [_vm._v("\n                    Auteur\n                ")]
+        ),
+        _vm._v(" "),
         _c(
           "th",
           {
