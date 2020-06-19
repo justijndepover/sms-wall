@@ -17,8 +17,8 @@
             </thead>
             <tbody class="bg-white">
                 <tr v-if="websocketReceived">
-                    <td colspan="4" class="px-6 py-4 whitespace-no-wrap border border-teal-200 bg-teal-100">
-                        <div class="flex align-items text-sm leading-5 text-teal-500 cursor-pointer" @click="paginate(1)">
+                    <td colspan="4" class="px-6 py-4 whitespace-no-wrap border border-blue-200 bg-blue-100">
+                        <div class="flex align-items text-sm leading-5 text-blue-500 cursor-pointer" @click="paginate(1)">
                             <svg viewBox="0 0 20 20" fill="currentColor" strokeWidth="2" class="w-4 h-4 mr-4"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path></svg>
                             <span>Er is nieuwe data beschikbaar, klik om te refreshen</span>
                         </div>
@@ -29,14 +29,14 @@
                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500" :class="(key != paginationData.data.length - 1) ? 'border-b border-gray-200' : ''">
                         {{ message.author }}
                     </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500" :class="(key != paginationData.data.length - 1) ? 'border-b border-gray-200' : ''">
+                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-700" :class="(key != paginationData.data.length - 1) ? 'border-b border-gray-200' : ''">
                         {{ message.message }}
                     </td>
                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500" :class="(key != paginationData.data.length - 1) ? 'border-b border-gray-200' : ''">
                         {{ dateTime(message.created_at) }}
                     </td>
                     <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium" :class="(key != paginationData.data.length - 1) ? 'border-b border-gray-200' : ''">
-                        <a href="#" class="text-teal-600 hover:text-teal-900">Details</a>
+                        <a href="#" class="text-blue-600 hover:text-blue-900">Details</a>
                     </td>
                 </tr>
             </tbody>

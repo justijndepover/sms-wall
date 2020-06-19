@@ -4,7 +4,7 @@
             <slot></slot>
         </div>
 
-        <div class="pt-4 pb-3 border-t border-teal-700">
+        <div class="pt-4 pb-3 border-t border-blue-700">
             <div class="flex items-center px-5">
                 <div class="flex-shrink-0">
                     <img class="h-10 w-10 rounded-full" :src="gravatar()" alt="" />
@@ -17,9 +17,9 @@
             </div>
 
             <div class="mt-3 px-2">
-                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700">Jouw profiel</a>
-                <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700">Instellingen</a>
-                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700">Uitloggen</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-blue-700 focus:outline-none focus:text-white focus:bg-blue-700">Jouw profiel</a>
+                <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-blue-700 focus:outline-none focus:text-white focus:bg-blue-700">Instellingen</a>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-blue-700 focus:outline-none focus:text-white focus:bg-blue-700">Uitloggen</a>
             </div>
         </div>
     </div>

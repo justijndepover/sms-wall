@@ -13,7 +13,7 @@
             </h2>
 
             @if (session('resent'))
-                <div class="py-2 px-4 bg-teal-100 mt-4 mb-4 text-teal-500 text-sm rounded-sm" role="alert">
+                <div class="py-2 px-4 bg-blue-100 mt-4 mb-4 text-blue-500 text-sm rounded-sm" role="alert">
                     <span class="flex items-center">
                         <svg viewBox="0 0 20 20" fill="currentColor" strokeWidth="2" class="w-4 h-4 mr-1">
                             <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
@@ -29,7 +29,7 @@
                 {{ __('Before proceeding, please check your email for a verification link.') }}
                 {{ __('If you did not receive the email') }},
                 <a href="#" onclick="event.preventDefault(); document.getElementById('resend-form').submit();"
-                    class="font-medium text-teal-600 hover:text-teal-500 focus:outline-none focus:underline transition ease-in-out duration-150">{{ __('click here to request another') }}</a>.
+                    class="font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:underline transition ease-in-out duration-150">{{ __('click here to request another') }}</a>.
 
                 <form id="resend-form" class="hidden" method="POST" action="{{ route('verification.resend') }}">
                     @csrf

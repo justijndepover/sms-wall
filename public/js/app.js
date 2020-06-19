@@ -47453,7 +47453,7 @@ var render = function() {
           2
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "pt-4 pb-3 border-t border-teal-700" }, [
+        _c("div", { staticClass: "pt-4 pb-3 border-t border-blue-700" }, [
           _c("div", { staticClass: "flex items-center px-5" }, [
             _c("div", { staticClass: "flex-shrink-0" }, [
               _c("img", {
@@ -47497,7 +47497,7 @@ var staticRenderFns = [
         "a",
         {
           staticClass:
-            "block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700",
+            "block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-blue-700 focus:outline-none focus:text-white focus:bg-blue-700",
           attrs: { href: "#" }
         },
         [_vm._v("Jouw profiel")]
@@ -47507,7 +47507,7 @@ var staticRenderFns = [
         "a",
         {
           staticClass:
-            "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700",
+            "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-blue-700 focus:outline-none focus:text-white focus:bg-blue-700",
           attrs: { href: "#" }
         },
         [_vm._v("Instellingen")]
@@ -47517,7 +47517,7 @@ var staticRenderFns = [
         "a",
         {
           staticClass:
-            "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700",
+            "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-blue-700 focus:outline-none focus:text-white focus:bg-blue-700",
           attrs: {
             href: "#",
             onclick:
@@ -47554,7 +47554,7 @@ var render = function() {
     "a",
     {
       staticClass:
-        "block px-3 py-2 rounded-md text-base font-medium focus:outline-none focus:text-white focus:bg-teal-700"
+        "block px-3 py-2 rounded-md text-base font-medium focus:outline-none focus:text-white focus:bg-blue-700"
     },
     [_vm._t("default")],
     2
@@ -47586,7 +47586,7 @@ var render = function() {
     "button",
     {
       staticClass:
-        "inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-teal-700 focus:outline-none focus:bg-gray-700 focus:text-white",
+        "inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-blue-700 focus:outline-none focus:bg-gray-700 focus:text-white",
       on: { click: _vm.openMenu }
     },
     [
@@ -47682,7 +47682,7 @@ var render = function() {
                     "td",
                     {
                       staticClass:
-                        "px-6 py-4 whitespace-no-wrap border border-teal-200 bg-teal-100",
+                        "px-6 py-4 whitespace-no-wrap border border-blue-200 bg-blue-100",
                       attrs: { colspan: "4" }
                     },
                     [
@@ -47690,7 +47690,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "flex align-items text-sm leading-5 text-teal-500 cursor-pointer",
+                            "flex align-items text-sm leading-5 text-blue-500 cursor-pointer",
                           on: {
                             click: function($event) {
                               return _vm.paginate(1)
@@ -47758,7 +47758,7 @@ var render = function() {
                       "td",
                       {
                         staticClass:
-                          "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500",
+                          "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-700",
                         class:
                           key != _vm.paginationData.data.length - 1
                             ? "border-b border-gray-200"
@@ -47806,7 +47806,7 @@ var render = function() {
                         _c(
                           "a",
                           {
-                            staticClass: "text-teal-600 hover:text-teal-900",
+                            staticClass: "text-blue-600 hover:text-blue-900",
                             attrs: { href: "#" }
                           },
                           [_vm._v("Details")]
