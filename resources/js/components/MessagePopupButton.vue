@@ -4,7 +4,7 @@
             <span class="text-xs leading-5 font-semibold uppercase tracking-wide">Voeg bericht toe</span>
         </button>
 
-        <button @click="isOpen = false" v-if="isOpen" tabindex="-1" class="z-10 fixed inset-0 h-full w-full bg-black opacity-25 cursor-default"></button>
+        <button @click="close" v-if="isOpen" tabindex="-1" class="z-10 fixed inset-0 h-full w-full bg-black opacity-25 cursor-default"></button>
 
         <div v-if="isOpen" class="card fixed z-20 transform transition-all w-full sm:max-w-lg p-4 sm:p-0" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
             <div class="bg-white rounded-lg overflow-hidden shadow-xl">
@@ -15,20 +15,20 @@
                         </h3>
 
                         <div class="mt-2">
-                            <textarea name="message" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md h-32 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 text-sm leading-5" placeholder="Begin te typen..."></textarea>
+                            <textarea name="message" v-model="message" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md h-32 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 text-sm leading-5" :class="isError ? 'border-red-300' : ''" placeholder="Begin te typen..."></textarea>
                         </div>
                     </div>
                 </div>
 
                 <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                     <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                        <button type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-blue-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                        <button type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-blue-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5" @click="send">
                             Verstuur
                         </button>
                     </span>
 
                     <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
-                        <button @click="isOpen = false" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                        <button @click="close" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                             Annuleer
                         </button>
                     </span>
@@ -43,12 +43,16 @@ export default {
     data() {
         return {
             isOpen: false,
+            isError: false,
+            message: '',
         }
     },
     created () {
         const handleEscape = (e) => {
             if (e.key === 'Esc' || e.key === 'Escape') {
                 this.isOpen = false;
+                this.isError = false;
+                this.message = '';
             }
         }
 
@@ -56,6 +60,34 @@ export default {
         this.$once('hook:beforeDestroy', () => {
             document.removeEventListener('keydown', handleEscape);
         })
+    },
+    methods: {
+        send() {
+            if (this.message == '') {
+                this.isError = true;
+                return;
+            }
+
+            var body = {
+                author: 'Justijn Depover',
+                message: this.message,
+            };
+
+            window.axios.post('/api/message', body)
+                .then(response => {
+                    this.isOpen = false;
+                    this.isError = false;
+                    this.message = '';
+                })
+                .catch(error => {
+                    this.isError = true;
+                });
+        },
+        close() {
+            this.isOpen = false;
+            this.isError = false;
+            this.message = '';
+        }
     },
 }
 </script>

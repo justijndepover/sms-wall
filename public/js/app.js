@@ -2110,7 +2110,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      isOpen: false
+      isOpen: false,
+      isError: false,
+      message: ''
     };
   },
   created: function created() {
@@ -2119,6 +2121,8 @@ __webpack_require__.r(__webpack_exports__);
     var handleEscape = function handleEscape(e) {
       if (e.key === 'Esc' || e.key === 'Escape') {
         _this.isOpen = false;
+        _this.isError = false;
+        _this.message = '';
       }
     };
 
@@ -2126,6 +2130,33 @@ __webpack_require__.r(__webpack_exports__);
     this.$once('hook:beforeDestroy', function () {
       document.removeEventListener('keydown', handleEscape);
     });
+  },
+  methods: {
+    send: function send() {
+      var _this2 = this;
+
+      if (this.message == '') {
+        this.isError = true;
+        return;
+      }
+
+      var body = {
+        author: 'Justijn Depover',
+        message: this.message
+      };
+      window.axios.post('/api/message', body).then(function (response) {
+        _this2.isOpen = false;
+        _this2.isError = false;
+        _this2.message = '';
+      })["catch"](function (error) {
+        _this2.isError = true;
+      });
+    },
+    close: function close() {
+      this.isOpen = false;
+      this.isError = false;
+      this.message = '';
+    }
   }
 });
 
@@ -48409,11 +48440,7 @@ var render = function() {
           staticClass:
             "z-10 fixed inset-0 h-full w-full bg-black opacity-25 cursor-default",
           attrs: { tabindex: "-1" },
-          on: {
-            click: function($event) {
-              _vm.isOpen = false
-            }
-          }
+          on: { click: _vm.close }
         })
       : _vm._e(),
     _vm._v(" "),
@@ -48434,7 +48461,52 @@ var render = function() {
               "div",
               { staticClass: "bg-white rounded-lg overflow-hidden shadow-xl" },
               [
-                _vm._m(0),
+                _c("div", { staticClass: "px-4 pt-5 pb-4 sm:p-6 sm:pb-4" }, [
+                  _c("div", { staticClass: "text-center sm:text-left" }, [
+                    _c(
+                      "h3",
+                      {
+                        staticClass:
+                          "text-xl leading-6 font-semibold text-blue-400",
+                        attrs: { id: "modal-headline" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Bericht\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mt-2" }, [
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.message,
+                            expression: "message"
+                          }
+                        ],
+                        staticClass:
+                          "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md h-32 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 text-sm leading-5",
+                        class: _vm.isError ? "border-red-300" : "",
+                        attrs: {
+                          name: "message",
+                          placeholder: "Begin te typen..."
+                        },
+                        domProps: { value: _vm.message },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.message = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                ]),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -48442,7 +48514,29 @@ var render = function() {
                     staticClass: "px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
                   },
                   [
-                    _vm._m(1),
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto"
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-blue-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5",
+                            attrs: { type: "button" },
+                            on: { click: _vm.send }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        Verstuur\n                    "
+                            )
+                          ]
+                        )
+                      ]
+                    ),
                     _vm._v(" "),
                     _c(
                       "span",
@@ -48457,11 +48551,7 @@ var render = function() {
                             staticClass:
                               "inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5",
                             attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                _vm.isOpen = false
-                              }
-                            }
+                            on: { click: _vm.close }
                           },
                           [
                             _vm._v(
@@ -48480,53 +48570,7 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "px-4 pt-5 pb-4 sm:p-6 sm:pb-4" }, [
-      _c("div", { staticClass: "text-center sm:text-left" }, [
-        _c(
-          "h3",
-          {
-            staticClass: "text-xl leading-6 font-semibold text-blue-400",
-            attrs: { id: "modal-headline" }
-          },
-          [_vm._v("\n                        Bericht\n                    ")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "mt-2" }, [
-          _c("textarea", {
-            staticClass:
-              "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md h-32 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 text-sm leading-5",
-            attrs: { name: "message", placeholder: "Begin te typen..." }
-          })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { staticClass: "flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto" },
-      [
-        _c(
-          "button",
-          {
-            staticClass:
-              "inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-blue-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5",
-            attrs: { type: "button" }
-          },
-          [_vm._v("\n                        Verstuur\n                    ")]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -61203,11 +61247,18 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['Accept'] = 'application/json';
+var token = document.head.querySelector('meta[name="api-token"]');
+
+if (token) {
+  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token.content;
+}
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
+
 
 
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
