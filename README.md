@@ -7,4 +7,4 @@ Basic application to use on big events.
 
 - Messages are sent to the screen with [pusher](https://pusher.com)
 - each message stays on the screen for 10s
-- the application supports interaction through a laravel command: `php artisan application:message`
+- the application supports interaction through a laravel command: `php artisan application:message` or via an api endpoint
