@@ -12,7 +12,7 @@
         <form class="mt-8" method="POST" action="{{ route('password.email') }}">
             @csrf
             @if (session('status'))
-                <div class="py-2 px-4 bg-blue-100 mb-8 text-blue-500 text-sm rounded-sm" role="alert">
+                <div class="py-2 px-4 bg-blue-100 mb-8 text-blue-500 text-sm rounded-lg" role="alert">
                     <span class="flex items-center">
                         <svg viewBox="0 0 20 20" fill="currentColor" strokeWidth="2" class="w-4 h-4 mr-1">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
@@ -26,7 +26,7 @@
             <div class="">
                 <div>
                     <input aria-label="{{ __('E-Mail Address') }}" name="email" type="email" required placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" autocomplete="email" autofocus
-                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5 @error('email') border-red-500 @enderror"/>
+                        class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5 @error('email') border-red-500 @enderror"/>
 
                     @error('email')
                         <span class="text-sm text-red-500" role="alert">{{ $message }}</span>
@@ -49,7 +49,7 @@
             </div>
 
             <div class="mt-6">
-                <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out">
+                <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out">
                     {{ __('Send Password Reset Link') }}
                 </button>
             </div>
