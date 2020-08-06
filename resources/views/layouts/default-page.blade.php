@@ -11,6 +11,8 @@
 
 <main>
     <div class="max-w-6xl mx-auto pb-6 px-4 sm:px-6 lg:px-8">
+        <alert></alert>
+
         @yield('content')
     </div>
 </main>

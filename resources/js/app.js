@@ -9,6 +9,7 @@ import MenuComponent from './components/MenuComponent';
 import MenuComponentItem from './components/MenuComponentItem';
 import MessagesTable from './components/MessagesTable';
 import MessagePopupButton from './components/MessagePopupButton';
+import Alert from './components/Alert';
 
 new Vue({
     el: '#app',
@@ -22,5 +23,6 @@ new Vue({
         MenuComponentItem,
         MessagesTable,
         MessagePopupButton,
+        Alert,
     },
 })

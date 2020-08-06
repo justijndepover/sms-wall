@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import { EventBus } from '../event-bus.js';
+
 export default {
     data() {
         return {
@@ -78,6 +80,7 @@ export default {
                     this.isOpen = false;
                     this.isError = false;
                     this.message = '';
+                    EventBus.$emit('alert', 'Het bericht werd op de muur geplaatst!');
                 })
                 .catch(error => {
                     this.isError = true;
