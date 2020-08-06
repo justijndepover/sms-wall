@@ -5,7 +5,7 @@ namespace App\Actions;
 use App\Models\Message;
 use App\Events\Application\MessageReceivedEvent;
 
-class CreatenewMessageAction
+class CreateNewMessageAction
 {
     public static function execute($author, $message)
     {
